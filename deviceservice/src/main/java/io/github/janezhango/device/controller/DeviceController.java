@@ -1,6 +1,6 @@
-package io.github.janezhango.app.controller;
+package io.github.janezhango.device.controller;
 
-import io.github.janezhango.app.model.Device;
+import io.github.janezhango.device.model.Device;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

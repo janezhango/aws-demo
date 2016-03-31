@@ -1,4 +1,4 @@
-package io.github.janezhango.app.model;
+package io.github.janezhango.device.model;
 
 /**
  * Created by xiaojing on 3/31/2016.

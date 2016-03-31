@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AppController {
     @RequestMapping("/app")
     @ResponseBody
-    public App getDevice() {
+    public App getApp() {
         return new App("1","test app");
     }
 }
