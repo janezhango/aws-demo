@@ -6,7 +6,7 @@ package io.github.janezhango.device.model;
 public class Device {
     private String id;
     private String name;
-
+    public Device(){}
     public Device(String id, String name) {
         this.id = id;
         this.name = name;
