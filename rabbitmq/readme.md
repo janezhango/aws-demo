@@ -1,0 +1,1 @@
+Need run the rabbitmq before all the application service run.
