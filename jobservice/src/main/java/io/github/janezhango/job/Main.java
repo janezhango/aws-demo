@@ -14,12 +14,12 @@ import org.springframework.context.annotation.ComponentScan;
 public class Main {
 
     @Bean
-    private JobListener listener() {
+    public JobListener listener() {
         return new JobListener();
     }
 
     @Bean
-    private MessageListenerAdapter listenerAdapter(JobListener listener) {
+    public MessageListenerAdapter listenerAdapter(JobListener listener) {
         return new MessageListenerAdapter(listener, "receiveMessage");
     }
 

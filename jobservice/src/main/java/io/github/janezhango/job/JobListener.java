@@ -16,12 +16,16 @@ public class JobListener {
         mapper = new ObjectMapper();
     }
 
-    public void receiveMessage(Map<Integer, Job> message) throws JsonProcessingException {
-        Iterator<Map.Entry<Integer, Job>> it = message.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<Integer, Job> pairs = (Map.Entry<Integer, Job>)it.next();
-            System.out.println(mapper.writeValueAsString(pairs.getValue()));
-            it.remove();
+    public void receiveMessage(String message) throws JsonProcessingException {
+//        Iterator<Map.Entry<Integer, Job>> it = message.entrySet().iterator();
+//        while (it.hasNext()) {
+//            Map.Entry<Integer, Job> pairs = (Map.Entry<Integer, Job>)it.next();
+//            System.out.println(mapper.writeValueAsString(pairs.getValue()));
+//            it.remove();
+//        }
+        if(message.equals("create job")){
+            Job job = new Job();
+            System.out.println("Job Created!!!");
         }
     }
 }

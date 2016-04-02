@@ -15,12 +15,14 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.janezhango.device.model.Device;
-@RestController
+
+@Controller
 public class JobPublisher {
 
     private static final String QUEUE_NAME = "job-queue";
@@ -50,22 +52,22 @@ public class JobPublisher {
         return BindingBuilder.bind(queue).to(exchange).with(QUEUE_NAME);
     }
 
-//    @RequestMapping("/sendall")
-//    public Map<Long, Person> sendAllPersons() throws InterruptedException {
-//        System.out.println("Sending message...");
-//        rabbitTemplate.convertAndSend(QUEUE_NAME, repository.getAllPersons());
-//        System.out.println("Message sent.");
-//
-//        return repository.getAllPersons();
-//    }
+    @RequestMapping("/sendall")
+    @ResponseBody
+    public List<Job> sendAllJobs() throws InterruptedException {
+        System.out.println("Sending message...");
+        rabbitTemplate.convertAndSend(QUEUE_NAME, repository);
+        System.out.println("Message sent.");
+
+        return repository;
+    }
 
     @RequestMapping("/createJob")
-    public Job createJob(
+    public void createJob(
             @RequestParam(value = "id", required = true) String id,
             @RequestParam(value = "name", required = true) String name) {
-
-        Job job = new Job(id, name);
-        repository.add(job);
-        return job;
+        System.out.println("Sending create job message...");
+        rabbitTemplate.convertAndSend(QUEUE_NAME, "create job");
+        System.out.println("Create job message sent.");
     }
 }
