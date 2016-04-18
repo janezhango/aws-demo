@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+spec:
+  containers:
+  - name: client
+    image: aws/client:test
+    ports:
+    - containerPort: 7893

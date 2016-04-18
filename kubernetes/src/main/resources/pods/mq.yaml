@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mq
+spec:
+  containers:
+  - name: mq
+    image: hpmc/rabbitmq:centos7
+    ports:
+    - containerPort: 4369
+      hostPort: 4396
+    - containerPort: 5672
+      hostPort: 5672
+    - containerPort: 15672
+      hostPort: 15672
+    - containerPort: 25672
+      hostPort: 25672
+  imagePullPolicy: Never
+  nodeSelector:
+    name: centos-master
