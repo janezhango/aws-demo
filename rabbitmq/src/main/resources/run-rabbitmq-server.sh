@@ -9,7 +9,7 @@ if [ ! -f /.run-rabbitmq-server-firstrun ]; then
 ].
 EOF
 
-	echo "set default user = admin and default password = $PASS"
+	echo "set default user = hpmc and default password = $PASS"
 
 	# add the vhost
 	(sleep 10 && rabbitmqctl add_vhost $DEVEL_VHOST_NAME && rabbitmqctl set_permissions -p $DEVEL_VHOST_NAME hpmc ".*" ".*" ".*") &
