@@ -15,3 +15,5 @@ For docker image:
 
 TODO:
   1. Add the scripts for queue operation
+
+After that you can access rabbit mq admin console by http://localhost:15672/ with guest/guest
